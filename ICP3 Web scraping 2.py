@@ -21,16 +21,20 @@ import os
 
 
 
-url = "https://en.wikipedia.org/wiki/Deep_learning"+lim+"&offset=0&search="+sea
+url = "https://en.wikipedia.org/wiki/Deep_learning"
+
+source_code = urllib.request.urlopen(url)
+
+soup = BeautifulSoup(source_code, "html.parser")
+
+
 
 #url = BeautifulSoup(html.content, "html.parser")
 
-print(url.h1)
+print(soup.h1.text)
 
-print(url.title) # To print the title
+print(soup.title.text) # To print the title
 
-print(url.find_all('a') # To print all the hyperlinks
-
-for link in url.find_all('a'):
+for link in soup.find_all('a'):
 
     print(link.get('href'))
